@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LoginRegKot</string>
+    <string name="alreadyRegister">
+        <u>Already Register ?</u>
+    </string>
+    <string name="newUser">
+        <u>New User ?</u>
+    </string>
+</resources>
