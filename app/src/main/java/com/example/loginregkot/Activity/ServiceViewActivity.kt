@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TextView
 import com.example.loginregkot.Adapter.ChildeServiceAdapter
 import com.example.loginregkot.Adapter.ServiceViewAdapter
 import com.example.loginregkot.Utility.ApiInterface
@@ -26,6 +29,8 @@ class ServiceViewActivity : AppCompatActivity() {
     private var dataList: MutableList<ServiceViewModel> = mutableListOf()
     private var childList: MutableList<ChildServiceModel> = mutableListOf()
     lateinit var recyclerView: RecyclerView
+    lateinit var serviceName:TextView
+    lateinit var childServiceName:TextView
     private lateinit var serviceAdapter: ServiceViewAdapter
     private lateinit var childeServiceAdapter: ChildeServiceAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +38,12 @@ class ServiceViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_service_view)
 
         recyclerView = findViewById(R.id.serviceViewRecycler)
+        serviceName = findViewById(R.id.serviceText)
+        childServiceName = findViewById(R.id.childServiceName)
+
         val intent = intent
         serviceId = intent.getStringExtra("serviceId").toString()
+        serviceName.text = intent.getStringExtra("serviceName")
         getServiceView("SUBSERVICE", serviceId!!)
     }
 
@@ -55,14 +64,15 @@ class ServiceViewActivity : AppCompatActivity() {
                dataList.addAll(response.body()?.getData()!!)
                serviceAdapter = ServiceViewAdapter(dataList, object :
                    ServiceViewAdapter.OnItemClick {
-                   override fun clickItem(API: String, serviceid: String, mobile: String) {
+                   override fun clickItem(API: String, serviceid: String, mobile: String, childServiceName:String) {
                        getChildServiceView(API, serviceid, mobile)
+                       var childName = findViewById<TextView>(R.id.childServiceName)
+                       childName.text = childServiceName
                    }
                })
                recyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
                recyclerView.adapter = serviceAdapter
                serviceAdapter.notifyDataSetChanged()
-               //var serviceId = dataList.get().getId()
                Log.e("response", "response"+response.body().toString())
            }
            override fun onFailure(call: Call<ServiceViewResponse>, t: Throwable) {

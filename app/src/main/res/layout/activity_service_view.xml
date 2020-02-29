@@ -4,17 +4,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp">
+    <TextView
+            android:id="@+id/serviceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/>
+    <View android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_below="@+id/serviceText"
+          android:layout_marginTop="2dp"
+          android:background="@color/colorPrimary"/>
     <android.support.v7.widget.RecyclerView
             android:id="@+id/serviceViewRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/serviceText"
+            android:layout_marginTop="10dp">
     </android.support.v7.widget.RecyclerView>
+
+    <View android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_below="@+id/serviceViewRecycler"
+          android:layout_marginTop="5dp"
+          android:background="@color/colorPrimary"/>
+    <TextView
+            android:id="@+id/childServiceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/serviceViewRecycler"/>
     <android.support.v7.widget.RecyclerView
             android:id="@+id/childServiceRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/serviceViewRecycler">
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/childServiceName">
     </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

@@ -25,7 +25,7 @@ class ServiceViewAdapter(var dataList: MutableList<ServiceViewModel>, var onItem
         val serviceViewModel = dataList[p1]
         p0.serviceViewName.text = serviceViewModel.getName()
         Picasso.with(p0.itemView.context).load(serviceViewModel.getImage()).into(p0.serviceViewImage)
-        p0.clickBind("CHILD_SERVICE",serviceViewModel.getId().toString(),"1234567890" , onItemClck)
+        p0.clickBind("CHILD_SERVICE",serviceViewModel.getId().toString(),"1234567890", serviceViewModel.getName().toString(), onItemClck)
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -36,13 +36,13 @@ class ServiceViewAdapter(var dataList: MutableList<ServiceViewModel>, var onItem
             serviceViewName = itemView.findViewById<TextView>(R.id.serviceViewName)
             serviceViewImage = itemView.findViewById<ImageView>(R.id.serviceViewImage)
         }
-         fun clickBind(API:String, serviceid:String, mobile:String, onItemClick: OnItemClick) {
+         fun clickBind(API:String, serviceid:String, mobile:String, childServiceName:String, onItemClick: OnItemClick) {
             itemView.setOnClickListener {
-                onItemClick.clickItem(API, serviceid, mobile)
+                onItemClick.clickItem(API, serviceid, mobile, childServiceName)
             }
         }
     }
     interface OnItemClick{
-        fun clickItem(API:String, serviceid:String, mobile:String )
+        fun clickItem(API:String, serviceid:String, mobile:String, childServiceName:String)
     }
 }

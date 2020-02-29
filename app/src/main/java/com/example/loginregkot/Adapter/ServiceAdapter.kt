@@ -27,6 +27,7 @@ class ServiceAdapter(private var dataList: MutableList<ServicePojo>) : RecyclerV
         holder.serviceImage.setOnClickListener {
             val intent = Intent(holder.itemView.context, ServiceViewActivity::class.java)
             intent.putExtra("serviceId", servicePojo.getId())
+            intent.putExtra("serviceName", servicePojo.getName())
             holder.itemView.context.startActivity(intent)
         }
     }
