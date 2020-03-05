@@ -39,7 +39,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/childServiceName">
+            android:layout_below="@+id/childServiceName"
+            android:layout_above="@+id/proceedButton">
     </android.support.v7.widget.RecyclerView>
+    <Button
+            android:id="@+id/proceedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:text="Proceed"/>
 
 </RelativeLayout>

@@ -1,12 +1,14 @@
 package com.example.loginregkot.Activity
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import com.example.loginregkot.Adapter.ChildeServiceAdapter
@@ -30,6 +32,7 @@ class ServiceViewActivity : AppCompatActivity() {
     private var childList: MutableList<ChildServiceModel> = mutableListOf()
     lateinit var recyclerView: RecyclerView
     lateinit var serviceName:TextView
+    lateinit var proceedButton:Button
     lateinit var childServiceName:TextView
     private lateinit var serviceAdapter: ServiceViewAdapter
     private lateinit var childeServiceAdapter: ChildeServiceAdapter
@@ -40,6 +43,11 @@ class ServiceViewActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.serviceViewRecycler)
         serviceName = findViewById(R.id.serviceText)
         childServiceName = findViewById(R.id.childServiceName)
+        proceedButton = findViewById(R.id.proceedButton)
+        proceedButton.setOnClickListener {
+            val cartIntent = Intent(applicationContext, CartActivity::class.java)
+            startActivity(cartIntent)
+        }
 
         val intent = intent
         serviceId = intent.getStringExtra("serviceId").toString()

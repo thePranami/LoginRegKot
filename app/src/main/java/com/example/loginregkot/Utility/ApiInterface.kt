@@ -1,9 +1,7 @@
 package com.example.loginregkot.Utility
 
 import com.example.loginregkot.PojoModel.ResultPojoModel
-import com.example.loginregkot.ResponseModel.ChildServiceResponse
-import com.example.loginregkot.ResponseModel.ServiceResponse
-import com.example.loginregkot.ResponseModel.ServiceViewResponse
+import com.example.loginregkot.ResponseModel.*
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -44,5 +42,28 @@ interface ApiInterface {
                         @Field("service_id") service_id:String,
                         @Field("mobile") mobile:String)
     : Call<ChildServiceResponse>
+
+    //
+    @FormUrlEncoded
+    @POST("index.php")
+    fun getCartItem(@Field("API") API: String,
+                    @Field("phone")phone: String): Call<CartPojoResponse>
+
+    //
+    @FormUrlEncoded
+    @POST("index.php")
+    fun addToCartData(@Field("API") API:String,
+    @Field("subid") name:String,
+    @Field("phone") phone:String,
+    @Field("quantity") email:String,
+    @Field("price") price:String
+    ) : Call<ResultPojoModel>
+
+    //address
+    @FormUrlEncoded
+    @POST("index.php")
+    fun getAddressData(@Field("API") API:String,
+                      @Field("Phone") Phone:String
+    ) : Call<AddressModelResponse>
 }
 

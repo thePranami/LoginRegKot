@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+    <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <RadioButton
+                android:id="@+id/addressRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </RadioGroup>
+    <TextView
+            android:id="@+id/selectAddressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select address for booking"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/radioGroup"/>
+    <TextView
+            android:id="@+id/addressHolderName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address holder name"
+            android:layout_below="@+id/selectAddressText"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/radioGroup"/>
+    <TextView
+            android:id="@+id/houseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="House name"
+            android:layout_below="@+id/addressHolderName"
+            android:layout_toRightOf="@+id/radioGroup"
+            android:layout_marginLeft="5dp"/>
+    <TextView
+            android:id="@+id/localityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Locality Name"
+            android:layout_below="@+id/houseName"
+            android:layout_toRightOf="@+id/radioGroup"
+            android:layout_marginLeft="5dp"/>
+    <TextView
+            android:id="@+id/addressType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/houseName"
+            android:text="Type"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:textSize="10sp"
+            android:background="@drawable/button_shape"
+            android:layout_alignParentEnd="true"/>
+    <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimary"
+            android:layout_below="@+id/localityName"/>
+    <LinearLayout
+            android:id="@+id/linearView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view1">
+        <Button
+                android:id="@+id/editAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:layout_weight="1"
+                android:layout_below="@+id/view1"/>
+        <Button
+                android:id="@+id/deleteAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:layout_weight="1"
+                android:layout_below="@+id/view1"/>
+    </LinearLayout>
+
+</RelativeLayout>
