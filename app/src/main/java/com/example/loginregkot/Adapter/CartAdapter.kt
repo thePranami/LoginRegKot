@@ -49,7 +49,7 @@ class CartAdapter(private var cartList: MutableList<CartPojoModel>)
         return if (cartList.isEmpty()){
             0
         }else {
-           return cartList.size
+            cartList.size
         }
     }
 

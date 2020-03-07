@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/grayLite"
         android:padding="5dp">
     <RadioGroup
             android:id="@+id/radioGroup"
@@ -11,6 +12,7 @@
         <RadioButton
                 android:id="@+id/addressRadioButton"
                 android:layout_width="wrap_content"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"/>
     </RadioGroup>
     <TextView
@@ -20,12 +22,15 @@
             android:text="Select address for booking"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
+            android:textColor="@color/black"
             android:layout_toRightOf="@+id/radioGroup"/>
     <TextView
             android:id="@+id/addressHolderName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Address holder name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             android:layout_below="@+id/selectAddressText"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
@@ -35,6 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="House name"
+            android:textColor="@color/black"
             android:layout_below="@+id/addressHolderName"
             android:layout_toRightOf="@+id/radioGroup"
             android:layout_marginLeft="5dp"/>
@@ -43,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Locality Name"
+            android:textColor="@color/black"
             android:layout_below="@+id/houseName"
             android:layout_toRightOf="@+id/radioGroup"
             android:layout_marginLeft="5dp"/>
@@ -52,10 +59,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/houseName"
             android:text="Type"
+            android:textColor="@color/black"
             android:gravity="center"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:background="@drawable/button_shape"
             android:layout_alignParentEnd="true"/>
     <View
@@ -85,5 +93,4 @@
                 android:layout_weight="1"
                 android:layout_below="@+id/view1"/>
     </LinearLayout>
-
 </RelativeLayout>

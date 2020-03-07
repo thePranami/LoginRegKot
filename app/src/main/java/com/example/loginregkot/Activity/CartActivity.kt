@@ -1,9 +1,11 @@
 package com.example.loginregkot.Activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.Button
 import com.example.loginregkot.Adapter.CartAdapter
 import com.example.loginregkot.PojoModel.CartPojoModel
 import com.example.loginregkot.R
@@ -19,11 +21,17 @@ class CartActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     lateinit var cartAdapter: CartAdapter
     var cartList: MutableList<CartPojoModel> = mutableListOf()
+    lateinit var proceedButton:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
         recyclerView = findViewById(R.id.cartRecycler)
+        proceedButton = findViewById(R.id.proceedButton)
+        proceedButton.setOnClickListener {
+            val addIntent = Intent(applicationContext, AddressActivity::class.java)
+            startActivity(addIntent)
+        }
         getCartData()
     }
 

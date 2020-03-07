@@ -1,5 +1,6 @@
 package com.example.loginregkot.Activity
 
+import android.app.ProgressDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class AddressActivity : AppCompatActivity() {
+    lateinit var progerssProgressDialog: ProgressDialog
     lateinit var recyclerView: RecyclerView
     var addressList: MutableList<AddressModel> = mutableListOf()
     lateinit var addressAdapter: AddressAdapter
@@ -29,6 +31,10 @@ class AddressActivity : AppCompatActivity() {
     }
 
     private fun getAddress(){
+        progerssProgressDialog=ProgressDialog(this)
+        progerssProgressDialog.setTitle("Loading")
+        progerssProgressDialog.setCancelable(false)
+        progerssProgressDialog.show()
         val retrofit:Retrofit = Retrofit.Builder().baseUrl("https://loopintechies.com/homeservice/android/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -36,6 +42,7 @@ class AddressActivity : AppCompatActivity() {
         val call:Call<AddressModelResponse> = apiInterFace.getAddressData("ADDRESS_LIST", "8081448062")
         call.enqueue(object :Callback<AddressModelResponse>{
             override fun onResponse(call: Call<AddressModelResponse>, response: Response<AddressModelResponse>) {
+                progerssProgressDialog.dismiss()
                 addressList.addAll(response.body()?.getData()!!)
                 recyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
                 addressAdapter = AddressAdapter(applicationContext, addressList)
@@ -43,7 +50,7 @@ class AddressActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<AddressModelResponse>, t: Throwable) {
-
+                progerssProgressDialog.dismiss()
             }
         })
     }
